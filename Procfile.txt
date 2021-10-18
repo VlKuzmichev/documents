@@ -1,1 +1,1 @@
-web: java -jar target/documents-0.0.1-SNAPSHOT.war
+web: java -war target/documents-0.0.1-SNAPSHOT.war
