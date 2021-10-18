@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>Создание документа</title>
+
+</head>
+<body>
+<div class="container">
+    <H1>Создание документа</H1>
+    <div class="form form-horizontal">
+        <form method="post" th:action="@{/documents}">
+            <div class="form-group">
+                <label for="date" class="col-form-label">Дата</label>
+                <input type="text" class="form-control" id="date"
+                       th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}" name="date"
+                       placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="value" class="col-form-label">Значение</label>
+                <input type="text" class="form-control" id="value" name="value"
+                       placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="sum" class="col-form-label">Сумма</label>
+                <input type="text" class="form-control" id="sum" name="sum"
+                       placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="doc-type" class="col-form-label">Тип документа</label>
+                <select id="doc-type" name="doc-type">
+                    <option th:each="type : ${docTypes}" th:value="${type.getId()}" th:text="${type.getName()}"
+                            th:selected></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="doc-unit" class="col-form-label">Учетная единица</label>
+                <select id="doc-unit" name="doc-unit">
+                    <option th:each="unit : ${docUnits}" th:value="${unit.getId()}"
+                            th:text="${unit.getService().getName()}"
+                            th:selected></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="employee" class="col-form-label">Специалист</label>
+                <select id="employee" name="employee">
+                    <option th:each="employee : ${employees}" th:value="${employee.getId()}"
+                            th:text="${employee.getName()}"
+                            th:selected></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    <span class="fa fa-close"></span>
+                    Назад
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <span class="fa fa-check"></span>
+                    Сохранить
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

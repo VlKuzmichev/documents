@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--    <link th:href="@{bootstrap.min.css}" rel="stylesheet" />-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Документы</title>
+
+</head>
+<body>
+<div class="container" th:switch="${documents}">
+    <h2 th:case="null">Документов пока нет</h2>
+    <div th:case="*">
+        <h2>Список документов</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Дата создания</th>
+                <th>Значение</th>
+                <th>Сумма</th>
+                <th>Тип</th>
+                <th>Услуга</th>
+                <th>Единица измерения</th>
+                <th>Сотрудник</th>
+                <th>Редактировать</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="document : ${documents}">
+                <td th:text='${document.getDateTime()}'></td>
+                <td th:text="${document.getValue()}"></td>
+                <td th:text="${document.getSum()} + ' руб.'"></td>
+                <td th:text="${document.getDocType().getName()}"></td>
+                <td th:text="${document.getDocUnit().getService().getName()}"></td>
+                <td th:text="${document.getDocUnit().getUnit().getName()}"></td>
+                <td th:text="${document.getEmployee().getName()}"></td>
+                <td><a class="link-dark" th:href="@{/documents/update(id=${document.getId()})}">Редактировать</a></td>
+                <td><a class="link-danger" th:href="@{/documents/delete(id=${document.getId()})}" title="45646">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a class="btn btn-primary" href="/documents/create">Добавить документ</a></p>
+
+    <!--    <input type="text" pattern="\d+,\d{2}">-->
+</div>
+</body>
+</html>
