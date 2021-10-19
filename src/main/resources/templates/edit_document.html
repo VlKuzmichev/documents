@@ -48,7 +48,7 @@
             <select id="doc-unit" name="doc-unit">
                 <option th:each="unit : ${docUnits}" th:value="${unit.getId()}" th:text="${unit.getService().getName()}"
                         th:selected="${unit == document.getDocUnit()}"></option>
-            </select> <span th:text="${document.getDocUnit().getUnit().getName()}"></span>
+            </select>
 
         </div>
 
