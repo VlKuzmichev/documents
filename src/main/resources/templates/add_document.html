@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
-
     <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<!--    <link rel="stylesheet" th:href="@{/webjars/datetimepicker/2.5.20-1/build/jquery.datetimepicker.min.css}" />-->
+<!--    <script th:src="@{/webjars/datetimepicker/2.5.20-1/build/jquery.datetimepicker.min.js}"></script>-->
     <!--    <meta name="viewport"-->
 <!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
 <!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
@@ -19,9 +20,10 @@
         <form method="post" th:action="@{/documents}">
             <div class="form-group">
                 <label for="date" class="col-form-label">Дата</label>
-                <input type="text" class="form-control" id="date"
-                       th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}" name="date"
+                <input type="datetime-local" class="form-control" id="date"
+                        name="date"
                        placeholder="">
+<!--                       th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}" name="date"-->
             </div>
             <div class="form-group">
                 <label for="value" class="col-form-label">Значение</label>
@@ -73,5 +75,6 @@
         </form>
     </div>
 </div>
+
 </body>
 </html>

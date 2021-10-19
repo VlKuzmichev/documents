@@ -17,11 +17,12 @@
 <div class="container">
     <H1>Редактирование документа</H1>
     <form method="post" th:action="@{/documents}">
+        <input type="hidden" name="id" th:value="${document.id}">
         <div class="form-group">
             <label for="date" class="col-form-label">Дата</label>
-            <input type="text" class="form-control" id="date"
-                   th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}"
-                   th:datetime="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}" name="date">
+            <input type="datetime-local" class="form-control" id="date"
+                   th:value="${document.getDateTime()}"
+                   name="date">
         </div>
         <div class="form-group">
             <label for="value" class="col-form-label">Значение</label>

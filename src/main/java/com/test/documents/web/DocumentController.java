@@ -58,7 +58,11 @@ public class DocumentController {
         int typeId = Integer.parseInt(request.getParameter("doc-type"));
         int unitId = Integer.parseInt(request.getParameter("doc-unit"));
         int employeeId = Integer.parseInt(request.getParameter("employee"));
-        Document document = new Document(null, LocalDateTime.parse(date), request.getParameter("value"),
+        Integer id = null;
+        if (!request.getParameter("id").isEmpty()) {
+            id = getId(request);
+        }
+        Document document = new Document(id, LocalDateTime.parse(date), request.getParameter("value"),
                 Integer.parseInt(request.getParameter("sum")), docTypeRepo.get(typeId), docUnitRepo.get(unitId), employeeRepo.get(employeeId));
         documentRepo.save(document);
         return "redirect:/documents";
