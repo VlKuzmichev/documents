@@ -37,7 +37,7 @@
 
         <div for="doc-type" class="form-group">
             <label class="col-form-label">Тип документа</label>
-            <select id="doc-type" name="doc-type">
+            <select  class="form-control" id="doc-type" name="doc-type">
                 <option th:each="type : ${docTypes}" th:value="${type.getId()}" th:text="${type.getName()}"
                         th:selected="${type == document.getDocType()}"></option>
             </select>
@@ -45,7 +45,7 @@
 
         <div class="form-group">
             <label for="doc-unit" class="col-form-label">Учетная единица</label>
-            <select id="doc-unit" name="doc-unit">
+            <select  class="form-control" id="doc-unit" name="doc-unit">
                 <option th:each="unit : ${docUnits}" th:value="${unit.getId()}" th:text="${unit.getService().getName()}"
                         th:selected="${unit == document.getDocUnit()}"></option>
             </select>
@@ -54,7 +54,7 @@
 
         <div for="employee" class="form-group">
             <label for="employee" class="col-form-label">Специалист</label>
-            <select id="employee" name="employee">
+            <select  class="form-control" id="employee" name="employee">
                 <option th:each="employee : ${employees}" th:value="${employee.getId()}" th:text="${employee.getName()}"
                         th:selected="${employee == document.getEmployee()}"></option>
             </select>

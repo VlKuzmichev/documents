@@ -19,18 +19,18 @@
     <h2 th:case="null">Документов пока нет</h2>
     <div th:case="*">
         <h2>Список документов</h2>
-        <table class="table table-bordered">
-            <thead>
+        <table class="table table-responsive-lg table-striped">
+            <thead class="" >
             <tr>
-                <th>Дата создания</th>
-                <th>Значение</th>
-                <th>Сумма</th>
-                <th>Тип</th>
-                <th>Услуга</th>
-                <th>Единица измерения</th>
-                <th>Сотрудник</th>
-                <th>Редактировать</th>
-                <th>Удалить</th>
+                <th scope="col">Дата создания</th>
+                <th scope="col">Значение</th>
+                <th scope="col">Сумма</th>
+                <th scope="col">Тип</th>
+                <th scope="col">Услуга</th>
+                <th scope="col">Единица измерения</th>
+                <th scope="col">Сотрудник</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -42,8 +42,8 @@
                 <td th:text="${document.getDocUnit().getService().getName()}"></td>
                 <td th:text="${document.getDocUnit().getUnit().getName()}"></td>
                 <td th:text="${document.getEmployee().getName()}"></td>
-                <td><a class="link-dark" th:href="@{/documents/update(id=${document.getId()})}">Редактировать</a></td>
-                <td><a class="link-danger" th:href="@{/documents/delete(id=${document.getId()})}" title="45646">Удалить</a></td>
+                <td><a class="btn btn-info" th:href="@{/documents/update(id=${document.getId()})}">Редактировать</a></td>
+                <td><a class="btn btn-danger" th:href="@{/documents/delete(id=${document.getId()})}" title="45646">Удалить</a></td>
             </tr>
             </tbody>
         </table>
